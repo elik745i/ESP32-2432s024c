@@ -26,7 +26,7 @@ data/static/script.js.gz
 data/static/style.css.gz
 data/static/*.js
 
-include/user_config_override.h
+#include/user_config_override.h
 src/user_config_override.h
 user_config_override.h
 #platformio_override.ini
