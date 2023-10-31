@@ -25,10 +25,12 @@ openHASP uses the ESP32 and STM32F4 to take advantage of the hardware capabiliti
 ![Screenshot](https://github.com/elik745i/ESP32-2432s024c/blob/master/ezgif-2-2f3b01c313.gif)
 
 ## Discussions
-[![Home Assistant Community](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/HASwitchPlate/openHASP/blob/master/LICENSE](https://community.home-assistant.io/t/openhasp-an-mqtt-driven-touchscreen-scene-controller/300853/407))
+[Link to OpenHASP Forum Post](https://community.home-assistant.io/t/openhasp-an-mqtt-driven-touchscreen-scene-controller/300853/407)
+
 
 ## Device prototype
-[![Youtube](https://youtu.be/8gqbHzWds7E?si=jNXc_tAFPuddFgds)
+[![YouTube Video](https://img.youtube.com/vi/8gqbHzWds7E/0.jpg)](https://youtu.be/8gqbHzWds7E)
+
 
 ## Getting Started
 
