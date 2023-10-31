@@ -1,4 +1,4 @@
-# openHASP firmware
+# openHASP custom firmware for ESP32-2432s024c board
 
 [![GitHub Workflow Status]( https://img.shields.io/github/actions/workflow/status/HASwitchPlate/openHASP/build.yaml?branch=master&label=build%20status&logo=github&logoColor=%23dddddd)](https://github.com/HASwitchPlate/openHASP/actions)
 [![GitHub release](https://img.shields.io/github/v/release/HASwitchPlate/openHASP?include_prereleases)](https://github.com/HASwitchPlate/openHASP/releases)
