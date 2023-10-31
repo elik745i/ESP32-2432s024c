@@ -22,7 +22,7 @@ openHASP uses the ESP32 and STM32F4 to take advantage of the hardware capabiliti
 ![Screenshot](https://www.openhasp.com/0.6/assets/images/screenshots/demo_switches_covers.png) &nbsp; 
 ![Screenshot](https://www.openhasp.com/0.6/assets/images/screenshots/demo_jaffa1.png) &nbsp; 
 ![Screenshot](https://www.openhasp.com/0.6/assets/images/screenshots/demo_mediaplayer.png)
-
+![Screenshot](https://github.com/elik745i/ESP32-2432s024c/blob/master/ezgif-2-2f3b01c313.gif)
 
 ## Getting Started
 
