@@ -60,6 +60,9 @@ class BaseTouch {
 #elif TOUCH_DRIVER == 0x0911 && defined(LGFX_USE_V1) && defined(HASP_USE_LGFX_TOUCH)
 #warning Building for LovyanGFX GT911
 #include "touch_driver_lovyangfx.h"
+#elif TOUCH_DRIVER == 0x0820 && defined(LGFX_USE_V1) && defined(HASP_USE_LGFX_TOUCH)
+#warning Building for LovyanGFX CST820
+#include "touch_driver_lovyangfx.h"
 #elif TOUCH_DRIVER == 0x6336 && defined(LGFX_USE_V1) && defined(HASP_USE_LGFX_TOUCH)
 #warning Building for LovyanGFX FT6336
 #include "touch_driver_lovyangfx.h"
@@ -78,6 +81,9 @@ class BaseTouch {
 #elif TOUCH_DRIVER == 0x0911
 #warning Building for GT911
 #include "touch_driver_gt911.h"
+#elif TOUCH_DRIVER == 0x0820
+#warning Building for CST820
+#include "touch_driver_cst820.h"
 #elif TOUCH_DRIVER == 0x0ADC
 #warning Building for analog touch
 #include "touch_driver_analog.h"

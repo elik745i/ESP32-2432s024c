@@ -12,6 +12,8 @@
 #include "drv/old/hasp_drv_tft_espi.h"
 #endif
 
+#elif TOUCH_DRIVER == 0x0820
+#include "drv/old/hasp_drv_cst820.h"
 #elif TOUCH_DRIVER == 0x2046
 #include "indev/XPT2046.h"
 #elif TOUCH_DRIVER == 0x2046B
@@ -65,6 +67,9 @@ void drv_touch_init(uint8_t rotation)
 #elif TOUCH_DRIVER == 0x0911
   //  GT911_init();
 
+#elif TOUCH_DRIVER == 0x0820
+  //CST820_init();
+
 #elif TOUCH_DRIVER == 0x0ADC // Analog Digital Touch Conroller
         // Touch_init();
 
@@ -97,6 +102,9 @@ static inline bool drv_touchpad_getXY(int16_t* touchX, int16_t* touchY)
 
 #elif TOUCH_DRIVER == 0x0911
   //  touched = GT911_getXY(&normal_x, &normal_y, true);
+
+#elif TOUCH_DRIVER == 0x0820
+  //touched = CST820_getXY(&normal_x, &normal_y, true);
 
 #elif TOUCH_DRIVER == 0x0ADC // Analog Digital Touch Conroller
     // touched = Touch_getXY(&normal_x, &normal_y, false);
@@ -223,4 +231,9 @@ IRAM_ATTR void drv_touch_loop()
 #if TOUCH_DRIVER == 0x0911
   //  GT911_loop();
 #endif
+
+#if TOUCH_DRIVER == 0x0820
+  //  CST820_loop();
+#endif
+
 }
