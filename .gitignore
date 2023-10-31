@@ -29,7 +29,7 @@ data/static/*.js
 include/user_config_override.h
 src/user_config_override.h
 user_config_override.h
-platformio_override.ini
+#platformio_override.ini
 user_setups/active/*
 user_setups/custom/*
 build_output/*
@@ -42,6 +42,9 @@ src/custom/*
 !src/custom/my_custom_template.h
 !src/custom/my_custom_template.cpp
 !src/custom/my_custom_fan_template.cpp
+!src/custom/my_custom.h
+!src/custom/my_custom.cpp
+!src/custom/bootlogo.h
 
 #npm filter
 node_modules/*
