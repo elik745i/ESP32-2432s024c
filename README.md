@@ -6,7 +6,7 @@
 [![Discord](https://img.shields.io/discord/538814618106331137?color=%237289DA&label=discord&logo=discord&logoColor=white)][3]
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](#Contributing)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/HASwitchPlate/openHASP/blob/master/LICENSE)
-[!["PayPal"](https://img.shields.io/badge/Paypal-donate-00457C.svg?logo=paypal)](https://github.com/HASwitchPlate/openHASP#donate)
+
 
 Control your home-automation devices from a customizable touchscreen UI connected via MQTT.
 
@@ -22,6 +22,15 @@ openHASP uses the ESP32 and STM32F4 to take advantage of the hardware capabiliti
 ![Screenshot](https://www.openhasp.com/0.6/assets/images/screenshots/demo_switches_covers.png) &nbsp; 
 ![Screenshot](https://www.openhasp.com/0.6/assets/images/screenshots/demo_jaffa1.png) &nbsp; 
 ![Screenshot](https://www.openhasp.com/0.6/assets/images/screenshots/demo_mediaplayer.png)
+![Screenshot](https://github.com/elik745i/ESP32-2432s024c/blob/master/ezgif-2-2f3b01c313.gif)
+
+## Discussions
+[Link to OpenHASP Forum Post](https://community.home-assistant.io/t/openhasp-an-mqtt-driven-touchscreen-scene-controller/300853/407)
+
+
+## Device prototype
+![Screenshot](https://github.com/elik745i/ESP32-2432s024c/blob/master/V3.1.gif)
+[![YouTube Video](https://img.youtube.com/vi/8gqbHzWds7E/0.jpg)](https://youtu.be/8gqbHzWds7E)
 
 
 ## Getting Started
