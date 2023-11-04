@@ -45,14 +45,17 @@ void custom_setup()
 {
     // Initialization code here
     last_blink = millis();
-    //pinMode(LED_BUILTIN1, OUTPUT);
-    //digitalWrite(LED_BUILTIN1, LOW);
-    //pinMode(LED_BUILTIN2, OUTPUT);
-    //digitalWrite(LED_BUILTIN2, LOW);
-    //pinMode(LED_BUILTIN3, OUTPUT);
-    //digitalWrite(LED_BUILTIN3, LOW);   
     pinMode(voltage_read, INPUT);
     pinMode(illum_read, INPUT);
+    //uncomment if LEDS are ON at start, then comment back
+    /*
+    pinMode(LED_BUILTIN1, OUTPUT);
+    analogWrite(LED_BUILTIN1, 255);
+    pinMode(LED_BUILTIN2, OUTPUT);
+    analogWrite(LED_BUILTIN2, 255);
+    pinMode(LED_BUILTIN3, OUTPUT);
+    analogWrite(LED_BUILTIN3, 255);
+    */
     randomSeed(millis());
 }
 
@@ -64,40 +67,61 @@ void custom_loop()
         currentVoltage = analogRead(voltage_read) * (maxVoltage / 4095.0);
         // Calculate the percentage of charge
         batteryFraction = map(constrain(currentVoltage, minVoltage, maxVoltage) * 1000, minVoltage * 1000, maxVoltage * 1000, 0, 100);
-
         illum = analogRead(illum_read);
-
-        if (batteryFraction <= 15) {
-            low_bat_alert(LED_BUILTIN1, fadeTime);
-        }
-        else if (batteryFraction <= 5) {
-             // Avoid rapid transitions by adding a delay
-            delay(1000);  // Adjust the delay as needed           
-            esp_deep_sleep(1000000LL * sleepTimeSeconds);;
-        } 
         last_blink = millis();
     }
+    if (batteryFraction <= 35) {
+            low_bat_alert(LED_BUILTIN1, fadeTime);
+            low_bat_alert(LED_BUILTIN1, fadeTime);
+    }
+    else if (batteryFraction <= 25) {
+            low_bat_alert(LED_BUILTIN1, fadeTime);
+            analogWrite(LED_BUILTIN2, 255);
+    }
+    else if (batteryFraction <= 15) {
+            //analogWrite(LED_BUILTIN1, 255);
+            //analogWrite(LED_BUILTIN2, 255);
+            //analogWrite(LED_BUILTIN3, 255);          
+            //esp_deep_sleep(1000000LL * sleepTimeSeconds);
+    } 
+    else{
+          analogWrite(LED_BUILTIN1, 255);
+    }
 }
+
 
 // Function to update the LED brightness for a heartbeat effect
 void low_bat_alert(int pin, int duration) {
-  unsigned long currentMillis = millis();
+    unsigned long currentMillis = millis();
 
-  // Check if it's time to update the LED brightness
-  if (currentMillis - lastMillis >= duration / 255) {
-    lastMillis = currentMillis;
+    // Check if it's time to update the LED brightness
+    if (currentMillis - lastMillis >= duration / 255) {
+        lastMillis = currentMillis;
 
-    // Update brightness based on the fade direction
-    brightness += fadeDirection;
+        // Update brightness based on the fade direction
+        brightness += fadeDirection;
 
-    // Change direction if reaching maximum or minimum brightness
-    if (brightness >= 255 || brightness <= 0) {
-      fadeDirection *= -1;
+        // Ensure brightness stays within the valid range
+        brightness = constrain(brightness, 0, 255);
+
+        // Change direction if reaching maximum or minimum brightness
+        if (brightness >= 255 || brightness <= 0) {
+            fadeDirection *= -1;
+        }
+
+        // Check if we are in the double-beat range (e.g., 50-100 or 150-200)
+        if ((brightness >= 50 && brightness <= 100) || (brightness >= 150 && brightness <= 200)) {
+            // Create a second beat by slightly modifying the brightness
+            int secondBeat = map(brightness, 50, 200, 0, 255);
+            analogWrite(pin, secondBeat);
+        } else {
+            // Otherwise, use the regular brightness
+            analogWrite(pin, brightness);
+        }
     }
-
-    analogWrite(pin, brightness);
-  }
 }
+
+
 
 void custom_every_second()
 {
