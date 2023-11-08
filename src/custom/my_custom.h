@@ -37,7 +37,10 @@ void custom_get_sensors(JsonDocument& doc);
 /* Receive custom topic & payload messages */
 void custom_topic_payload(const char* topic, const char* payload, uint8_t source);
 
-void updateBatteryDisplay(); //to display battery level directly
+//to display battery data directly
+void updateBatteryDisplay(uint8_t page, uint8_t id, float adata);
+void updateVoltageDisplay(uint8_t page, uint8_t id, float adata);
+void updateTextDisplay(uint8_t page, uint8_t id, const char* text);
 
 #endif // HASP_USE_CUSTOM
 

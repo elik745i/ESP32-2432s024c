@@ -77,7 +77,16 @@ void custom_loop()
         batteryFraction = map(constrain(currentVoltage, minVoltage, maxVoltage) * 1000, minVoltage * 1000, maxVoltage * 1000, 0, 100);
         illum = analogRead(illum_read);
         last_blink = millis();
-        updateBatteryDisplay();
+        updateBatteryDisplay(11, 2, batteryFraction);
+        updateBatteryDisplay(9, 9, batteryFraction);
+        updateBatteryDisplay(0, 7, batteryFraction);
+        //updateVoltageDisplay(9,10,currentVoltage);
+        String voltageString = String(currentVoltage, 2);  // Converts the float to a String with 2 decimal places
+        voltageString += "V";  // Concatenates "V" at the end
+        updateTextDisplay(9, 10, voltageString.c_str());
+        String fractionString = String(batteryFraction, 2);  // Converts the float to a String with 2 decimal places
+        fractionString += "%";  // Concatenates "%" at the end 
+        updateTextDisplay(9, 11, fractionString.c_str());              
     }
     if (batteryFraction <= 35) {
             low_bat_alert(LED_BUILTIN1, fadeTime);
@@ -99,15 +108,16 @@ void custom_loop()
 
 }
 
-void updateBatteryDisplay()
-{
-     uint8_t page = 11;   // the page of the object you want to rotate
-    uint8_t id   = 2; // the id of the object you want to rotate
+void updateBatteryDisplay(uint8_t page, uint8_t id, float adata) {
+    lv_obj_t* widget = hasp_find_obj_from_page_id(page, id);
+    if (!widget) return; // object doesn't exist
+    lv_bar_set_value(widget, adata, LV_ANIM_OFF);
+}
 
-    lv_obj_t* fan = hasp_find_obj_from_page_id(page, id);
-    if(!fan) return; // object doesn't exist
-
-    lv_bar_set_value(fan, batteryFraction, LV_ANIM_OFF);
+void updateTextDisplay(uint8_t page, uint8_t id, const char* text) {
+    lv_obj_t* widget = hasp_find_obj_from_page_id(page, id);
+    if (!widget) return; // object doesn't exist
+    lv_label_set_text(widget, text);
 }
 
 // Function to update the LED brightness for a heartbeat effect
