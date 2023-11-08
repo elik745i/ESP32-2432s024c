@@ -5,12 +5,13 @@
 //        - Change false to true on line 9
 
 #include "hasplib.h"
+//#include <lvgl.h>
 
 #if defined(HASP_USE_CUSTOM) && true // <-- set this to true in your code
 
 #include "hasp_debug.h"
 #include "custom/my_custom.h"
-//#include <esp_deep_sleep.h>
+
 
 unsigned long last_blink = 0;
 bool blink_state = LOW;
@@ -26,6 +27,9 @@ float batteryFraction;
 float currentVoltage;
 int illum;
 
+//extern lv_obj_t* battery_bar;  // Declare the battery bar variable
+//lv_obj_t* battery_bar;  // Declare the battery bar variable
+
 // Implement heartbeat led
 const int fadeTime = 1000; 
 unsigned long lastMillis = 0;
@@ -35,7 +39,7 @@ int fadeDirection = 1;  // 1 for fading in, -1 for fading out
 //Voltage read
 const int MAX_ANALOG_VAL = 4095;
 const float MAX_BATTERY_VOLTAGE = 4.2; // Max LiPoly voltage of a 3.7 battery is 4.2
-const float minVoltage = 3.0;  // Minimum voltage (0% charge)
+const float minVoltage = 3.3;  // Minimum voltage (0% charge)
 const float maxVoltage = 4.2;  // Maximum voltage (100% charge)
 
 //deep sleep timer
@@ -57,6 +61,10 @@ void custom_setup()
     analogWrite(LED_BUILTIN3, 255);
     */
     randomSeed(millis());
+
+    //lv_init();
+    //lv_disp_drv_t disp_drv;
+    //lv_disp_drv_init(&disp_drv);
 }
 
 void custom_loop()
@@ -69,6 +77,7 @@ void custom_loop()
         batteryFraction = map(constrain(currentVoltage, minVoltage, maxVoltage) * 1000, minVoltage * 1000, maxVoltage * 1000, 0, 100);
         illum = analogRead(illum_read);
         last_blink = millis();
+        updateBatteryDisplay();
     }
     if (batteryFraction <= 35) {
             low_bat_alert(LED_BUILTIN1, fadeTime);
@@ -79,16 +88,27 @@ void custom_loop()
             analogWrite(LED_BUILTIN2, 255);
     }
     else if (batteryFraction <= 15) {
-            //analogWrite(LED_BUILTIN1, 255);
-            //analogWrite(LED_BUILTIN2, 255);
-            //analogWrite(LED_BUILTIN3, 255);          
-            //esp_deep_sleep(1000000LL * sleepTimeSeconds);
+            analogWrite(LED_BUILTIN1, 255);
+            analogWrite(LED_BUILTIN2, 255);
+            analogWrite(LED_BUILTIN3, 255);          
+            esp_deep_sleep(1000000LL * sleepTimeSeconds);
     } 
     else{
           analogWrite(LED_BUILTIN1, 255);
     }
+
 }
 
+void updateBatteryDisplay()
+{
+     uint8_t page = 11;   // the page of the object you want to rotate
+    uint8_t id   = 2; // the id of the object you want to rotate
+
+    lv_obj_t* fan = hasp_find_obj_from_page_id(page, id);
+    if(!fan) return; // object doesn't exist
+
+    lv_bar_set_value(fan, batteryFraction, LV_ANIM_OFF);
+}
 
 // Function to update the LED brightness for a heartbeat effect
 void low_bat_alert(int pin, int duration) {

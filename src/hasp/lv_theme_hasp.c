@@ -1133,6 +1133,7 @@ static void theme_apply(lv_theme_t* th, lv_obj_t* obj, lv_theme_style_t name)
             break;
 #endif
 
+
 #if LV_USE_SWITCH
         case LV_THEME_SWITCH:
             list = lv_obj_get_style_list(obj, LV_SWITCH_PART_BG);
