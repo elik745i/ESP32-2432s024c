@@ -38,11 +38,11 @@ openHASP uses the ESP32 and STM32F4 to take advantage of the hardware capabiliti
 Check out the [documentation](https://www.openhasp.com/) for how-to's, information and frequently asked questions.</br>
 For support using openHASP, please join the [#openHASP channel][3] on Discord.
 
-## Donate
+## STL case
 
-[![Paypal donation](https://img.shields.io/badge/Paypal-donate-00457C?style=for-the-badge&logo=paypal)][4]
-[![Buy a coffee](https://img.shields.io/badge/Kofi-donate-FF5E5B?style=for-the-badge&logo=kofi)](https://ko-fi.com/openhasp)
-[![Buy me a coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-donate-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://www.buymeacoffee.com/aktdCofU)
+[Link to STL files for printing](https://www.thingiverse.com/thing:6274345)
+
+
 
 [1]: https://github.com/HASwitchPlate/HASPone
 [2]: https://github.com/lvgl/lvgl
