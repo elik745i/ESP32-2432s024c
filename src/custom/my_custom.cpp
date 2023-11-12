@@ -57,10 +57,9 @@ void custom_setup()
                                                  //               ----/\/\/\/\----GND         photoresistor on front panel
 
     //uncomment compile, flush to make sure inverted builtin LEDs are off on device start, then comment, compile flush again so local led control works properly
-   
-    pinMode(LED_BUILTIN1, INPUT_PULLUP);
-    pinMode(LED_BUILTIN2, INPUT_PULLUP);
-    pinMode(LED_BUILTIN3, INPUT_PULLUP);
+    //pinMode(LED_BUILTIN1, INPUT_PULLUP);
+    //pinMode(LED_BUILTIN2, INPUT_PULLUP);
+    //pinMode(LED_BUILTIN3, INPUT_PULLUP);
     
 
     randomSeed(millis());
