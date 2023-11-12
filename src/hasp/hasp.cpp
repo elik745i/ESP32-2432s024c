@@ -541,6 +541,7 @@ void hasp_set_theme(uint8_t themeid)
 /**
  * Create a demo application
  */
+
 void haspSetup(void)
 {
     haspDevice.set_backlight_level(haspStartDim);
@@ -602,6 +603,7 @@ void haspSetup(void)
     // obj->user_data.objid = LV_HASP_DATETIME;
     // obj->user_data.id    = 199;
     // lv_datetime_set_text_fmt(obj,"%A, %B %d");
+
 }
 
 /**********************

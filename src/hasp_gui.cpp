@@ -376,6 +376,7 @@ void guiSetup()
 #endif // ESP32 && HASP_USE_ESP_MQTT
 
     LOG_INFO(TAG_LVGL, F(D_SERVICE_STARTED));
+
 }
 
 IRAM_ATTR void guiLoop(void)
@@ -389,6 +390,7 @@ IRAM_ATTR void guiLoop(void)
 #if !(defined(WINDOWS) || defined(POSIX))
     // haspTouch.loop();
 #endif
+
 }
 
 void guiEverySecond(void)

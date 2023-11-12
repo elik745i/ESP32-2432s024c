@@ -624,6 +624,9 @@ typedef struct {
 /*Bar (dependencies: -)*/
 #define LV_USE_BAR      1
 
+/*Battery Bar (dependencies: -)*/
+#define LV_USE_BAT_BAR      1
+
 /*Button (dependencies: lv_cont*/
 #define LV_USE_BTN      1
 
