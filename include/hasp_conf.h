@@ -180,7 +180,7 @@
 #if defined(ARDUINO_ARCH_ESP8266)
 #define HASP_NUM_PAGES 4
 #else
-#define HASP_NUM_PAGES 12
+#define HASP_NUM_PAGES 20
 #endif
 #endif
 
