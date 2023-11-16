@@ -41,7 +41,7 @@ int fadeDirection = 1;  // 1 for fading in, -1 for fading out
 //Voltage read
 const int MAX_ANALOG_VAL = 4095;
 const float MAX_BATTERY_VOLTAGE = 4.2; // Max LiPoly voltage of a 3.7 battery is 4.2
-const float minVoltage = 3.3;  // Minimum voltage (0% charge)
+const float minVoltage = 3.0;  // Minimum voltage (0% charge)
 const float maxVoltage = 4.2;  // Maximum voltage (100% charge)
 
 //deep sleep timer
@@ -56,17 +56,15 @@ void custom_setup()
                                                  //               |                     
                                                  //               ----/\/\/\/\----GND         photoresistor on front panel
 
-    //uncomment compile, flush to make sure inverted builtin LEDs are off on device start, then comment, compile flush again so local led control works properly
-    //pinMode(LED_BUILTIN1, INPUT_PULLUP);
-    //pinMode(LED_BUILTIN2, INPUT_PULLUP);
-    //pinMode(LED_BUILTIN3, INPUT_PULLUP);
+    /*uncomment compile, flush to make sure inverted builtin LEDs are off on device start, then comment, compile flush again so local led control 
+    and response from HA to works properly*/
+
+    pinMode(LED_BUILTIN1, INPUT_PULLUP);
+    pinMode(LED_BUILTIN2, INPUT_PULLUP);
+    pinMode(LED_BUILTIN3, INPUT_PULLUP);
     
 
     randomSeed(millis());
-
-    //lv_init();
-    //lv_disp_drv_t disp_drv;
-    //lv_disp_drv_init(&disp_drv);
 }
 
 void custom_loop()
