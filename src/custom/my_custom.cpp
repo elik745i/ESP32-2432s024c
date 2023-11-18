@@ -81,22 +81,22 @@ void custom_loop()
 
         last_blink = millis();
         
-        updateBatteryDisplay(11, 2, batteryFraction);
+        updateBatteryDisplay(12, 9, batteryFraction);
         updateBatteryDisplay(9, 9, batteryFraction);
         updateBatteryDisplay(0, 7, batteryFraction);
         //updateVoltageDisplay(9,10,currentVoltage);
         String voltageString = String(currentVoltage, 2);     // Converts the float to a String with 2 decimal places
         voltageString += "V";                                 // Concatenates "V" at the end
-        updateTextDisplay(9, 10, voltageString.c_str());
+        updateTextDisplay(12, 10, voltageString.c_str());
         String fractionString = String(batteryFraction, 2);   // Converts the float to a String with 2 decimal places
         fractionString += "%";                                // Concatenates "%" at the end 
         updateTextDisplay(9, 11, fractionString.c_str());  
-        updateTextDisplay(11, 3, fractionString.c_str());
+        updateTextDisplay(12, 11, fractionString.c_str());
         //illumread  
         String fractionIllum = String(illumFraction, 2);      // Converts the float to a String with 2 decimal places
         fractionIllum += "%";                                 // Concatenates "%" at the end 
-        updateBatteryDisplay(11, 5, illumFraction);           //illumination bar
-        updateTextDisplay(11, 6, fractionIllum.c_str());      //illumination bar text      
+        //updateBatteryDisplay(12, 5, illumFraction);           //illumination bar
+        //updateTextDisplay(12, 6, fractionIllum.c_str());      //illumination bar text      
     }
     if (batteryFraction <= 35) {
             low_bat_alert(LED_BUILTIN1, fadeTime);
